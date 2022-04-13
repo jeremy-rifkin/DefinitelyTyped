@@ -1405,6 +1405,11 @@ suite('assert', () => {
     test('assert', () => {
         const foo = 'bar' as string;
         assert(foo === 'bar', 'expected foo to equal `bar`');
+
+        function assertTypeNever(_: never) {}
+        if (foo !== 'bar') {
+            assertTypeNever(foo);
+        }
     });
 
     test('assertFailure', () => {
